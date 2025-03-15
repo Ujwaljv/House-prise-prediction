@@ -10,3 +10,5 @@ Author:Ujwal JV
 3:python app.py
 <br>
 # prdect the house price using train data and test data 
+
+![alt text](image.png)
