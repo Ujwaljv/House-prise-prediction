@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Price Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .btn-primary {
+            background-color: #ffcc00;
+            border: none;
+            color: black;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #ff9900;
+        }
+        .prediction-result {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏡 Home Price Prediction</h1>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="POSTED_BY">Posted By</label>
+                <select id="POSTED_BY" name="POSTED_BY">
+                         <option value="1">Owner</option>
+                        <option value="2">Dealer</option>
+                         <option value="3">Builder</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="UNDER_CONSTRUCTION">Under Construction</label>
+            <select id="UNDER_CONSTRUCTION" name="UNDER_CONSTRUCTION">
+                    <option value="0">No</option>
+                   <option value="1">Yes</option>
+           </select>
+            </div>
+            <div class="form-group">
+                <label for="RERA">Real Estate Regulatory Authority</label>
+                <select id="RERA" name="RERA">
+                    <option value="0">No</option>
+                   <option value="1">Yes</option>
+           </select>
+            </div>
+            <div class="form-group">
+                <label for="BHK_NO.">BHK Number</label>
+                <input type="text" class="form-control" id="BHK_NO." name="BHK_NO." required>
+            </div>
+            <div class="form-group">
+                <label for="BHK_OR_RK">BHK or RK</label>
+                <select id="BHK_OR_RK" name="BHK_OR_RK">
+                    <option value="1">BHK</option>
+                   <option value="0">RK</option>
+
+           </select>
+            </div>
+            <div class="form-group">
+                <label for="SQUARE_FT">Square Feet</label>
+                <input type="text" class="form-control" id="SQUARE_FT" name="SQUARE_FT" required>
+            </div>
+            <div class="form-group">
+                <label for="READY_TO_MOVE">Ready to Move</label>
+               <select id="READY_TO_MOVE" name="READY_TO_MOVE">
+                    <option value="1">YES</option>
+                   <option value="0">NO</option>
+           </select>
+            </div>
+            <div class="form-group">
+                <label for="RESALE">Resale</label>
+               <select id="RESALE" name="RESALE">
+                    <option value="1">YES</option>
+                   <option value="0">NO</option>
+           </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">🔮 Predict</button>
+        </form>
+        
+        {% if result is not none %}
+        <div class="prediction-result text-center">
+            <h3>Prediction Result:</h3>
+            <p><strong>🏠 Predicted Value:</strong> {{ result }}lakhs</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
